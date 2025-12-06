@@ -1,9 +1,27 @@
 import express from 'express';
+// import bodyParser from 'body-parser';
 
 const app = express();
-
+app.use(express.json());
+// app.use(bodyParser)
 app.get('/users',(req,res)=>{
+    console.log("this is working");
     res.send("hello,i came from backend");
+})
+
+app.put('/edit-user',(req,res)=>{
+    let mydata=req.body;
+    console.log(mydata);
+    res.end("data edited")
+})
+app.post('/add-user',(req,res)=>{
+    let data=req.body;
+    console.log(data);
+    res.send("data added");
+}
+)
+app.delete('/delete-user',(req,res)=>{
+    res.send("deleted");
 })
 app.listen(7007,()=>{
     console.log("server running at port 7007")
